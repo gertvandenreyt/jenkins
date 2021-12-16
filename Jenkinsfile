@@ -1,11 +1,12 @@
-pipeline {
-    agent { dockerfile true }
-    stages {
-        stage('Test') {
-            steps {
-                sh 'node --version'
-                sh 'svn --version'
-            }
-        }
+node {
+    checkout scm
+
+    docker.withRegistry('https://github.com/gertvandenreyt/jenkins', 'dockerhub') {
+
+
+        def customImage = docker.build("gertvandenreyt/jenkins:${env.BUILD_ID}")
+
+        /* Push the container to the custom Registry */
+        customImage.push()
     }
 }
