@@ -1,7 +1,7 @@
 node {
     checkout scm
 
-    docker.withRegistry('https://hub.docker.com/repository/docker/gertvandenreyt/jenkins', 'dockerhubsecret') {
+    docker.withRegistry('https://registry.hub.docker.com', 'dockerhubsecret') {
 
 
         def customImage = docker.build("gertvandenreyt/jenkins:${env.BUILD_ID}")
