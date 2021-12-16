@@ -105,6 +105,7 @@ RUN set -ex; \
 			apt-get update; \
 			;; \
 		*) \
+
 # we're on an architecture upstream doesn't officially build for
 # let's build binaries from their published source packages
 			echo "deb-src http://apt.postgresql.org/pub/repos/apt/ bullseye-pgdg main $PG_MAJOR" > /etc/apt/sources.list.d/pgdg.list; \
